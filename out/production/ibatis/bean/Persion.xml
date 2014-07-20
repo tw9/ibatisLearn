@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL MAP 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+    <typeAlias alias="Persion" type="bean.Persion"/>
+    <!-- ibatis查询操作 -->
+    <select id="getAll" resultClass="Persion">
+        select *
+        from persion
+    </select>
+
+    <select id="byGender" resultClass="Persion">
+        select * from persion
+        where gender=#gender#
+
+    </select>
+    <insert id="insert" parameterClass="Persion">
+          insert into persion(id,name,gender,address)
+          values(#id#,#name#,#gender#,#address#);
+    </insert>
+    <update id="update" parameterClass="Persion">
+        update persion set name=#name# where id=#id#
+    </update>
+    
+    <update id="update2" parameterClass="map">
+        update persion set name=#name# where id=#id#
+    </update>
+</sqlMap>
